@@ -1,0 +1,1198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+</head>
+
+<body>
+<table border="1" cellpadding="0" cellspacing="0">
+  <col width="203" />
+  <col width="296" span="3" />
+  <tr>
+    <td width="100" height="35" bgcolor="#FFCCCC">操作</td>
+    <td width="233" align="center" bgcolor="#FFCCCC">SQLServer</td>
+    <td width="310" align="center" bgcolor="#FFCCCC">Oracle</td>
+    <td width="409" align="center" bgcolor="#FFCCCC">Mysql</td>
+  </tr>
+  <tr>
+    <td rowspan="2" width="100">查看表結構</td>
+    <td rowspan="2" width="233">exec sp_help 表名</td>
+    <td width="310">desc 表名</td>
+    <td width="409">desc 表名 或 describe 表名 或</td>
+  </tr>
+  <tr>
+    <td width="310">在command window看</td>
+    <td width="409">show columns from 表名;</td>
+  </tr>
+  <tr>
+    <td width="100">修改資料庫名稱</td>
+    <td width="233">exec sp_renamedb &lsquo;舊資料庫名&rsquo;,&rsquo;新資料庫名&rsquo;</td>
+    <td width="310">不詳</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">修改表名</td>
+    <td width="233">exec sp_rename &lsquo;舊表明&rsquo;,&rsquo;新表明&rsquo;</td>
+    <td width="310">rename 舊表名 to 新表名</td>
+    <td width="409">alter table 表名    rename to 新表名</td>
+  </tr>
+  <tr>
+    <td width="100">修改列名</td>
+    <td width="233">exec sp_rename &lsquo;表.舊列名&rsquo;,&rsquo;新列名&rsquo;</td>
+    <td width="310">alter table 表名    rename column 舊列名 to 新列名</td>
+    <td width="409">alter table test change column address address1 varchar(30)--修改表列名</td>
+  </tr>
+  <tr>
+    <td width="100">刪除資料庫</td>
+    <td width="233">drop database 資料庫名</td>
+    <td width="310">不詳</td>
+    <td width="409">Drop database</td>
+  </tr>
+  <tr>
+    <td rowspan="2" width="100">添加表中一列</td>
+    <td rowspan="2" width="233">alter table 表名 Add 列名 資料庫類型</td>
+    <td width="310">alter table 表明    &nbsp;add(列名 資料類型) 或</td>
+    <td rowspan="2" width="409">alter table test add column name varchar(10); --添加表列</td>
+  </tr>
+  <tr>
+    <td width="310">alter table 表名 Add 列名 資料庫類型</td>
+  </tr>
+  <tr>
+    <td width="100">刪除表中一列</td>
+    <td width="233">alter table&nbsp; 表名    drop column 列名</td>
+    <td width="310">alter table 表名 drop    column 列名</td>
+    <td width="409">alter table test drop column name;</td>
+  </tr>
+  <tr>
+    <td rowspan="2" width="100">修改表現有列</td>
+    <td width="233">alter table 表名    alter column &nbsp;列名</td>
+    <td rowspan="2" width="310">alter table 表明    modify(列名 資料類型)</td>
+    <td width="409">alter table test modify address char(10) --修改表列類型 </td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;新資料庫類型 大小</td>
+    <td width="409">||alter table test change address address char(40)</td>
+  </tr>
+  <tr>
+    <td width="100">刪除約束</td>
+    <td width="233">alter table 表名 drop    constraint&nbsp; 約束名</td>
+    <td width="310">完全一樣</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td rowspan="2" width="100">添加主鍵約束</td>
+    <td width="233">alter table 表名</td>
+    <td rowspan="2" width="310">完全一樣</td>
+    <td rowspan="2" width="409">alter table 表明add    primary key (列名)</td>
+  </tr>
+  <tr>
+    <td width="233">add constraint 主鍵約束名 primary key (列名)</td>
+  </tr>
+  <tr>
+    <td rowspan="2" width="100">刪除主鍵約束</td>
+    <td rowspan="2" width="233">　</td>
+    <td rowspan="2" width="310">　</td>
+    <td rowspan="2" width="409">alter &nbsp;table 表名    drop primary key</td>
+  </tr>
+  <tr> </tr>
+  <tr>
+    <td rowspan="2" width="100">添加唯一約束</td>
+    <td width="233">alter table 表名</td>
+    <td rowspan="2" width="310">完全一樣</td>
+    <td rowspan="2" width="409">alter table 表名 add    unique (列名)</td>
+  </tr>
+  <tr>
+    <td width="233">add constraint 唯一約束名 unique&nbsp; (列名)</td>
+  </tr>
+  <tr>
+    <td rowspan="2" width="100">添加默認約束</td>
+    <td width="233">alter table 表名</td>
+    <td rowspan="2" width="310">完全一樣</td>
+    <td rowspan="2" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">add constraint default (值) for 列名</td>
+  </tr>
+  <tr>
+    <td rowspan="2" width="100">添加檢查約束</td>
+    <td width="233">alter table 表名</td>
+    <td rowspan="2" width="310">完全一樣</td>
+    <td rowspan="2" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">add constraint check (列名 &gt; 10)</td>
+  </tr>
+  <tr>
+    <td rowspan="8" width="100">添加外鍵約束</td>
+    <td width="233">alter table 子表</td>
+    <td rowspan="8" width="310">完全一樣</td>
+    <td rowspan="8" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">add constraint 外鍵約束名 foreign key</td>
+  </tr>
+  <tr>
+    <td width="233">(子表的列名) references 主表 (列名)</td>
+  </tr>
+  <tr>
+    <td width="233">on update cascade&nbsp; / on    update action</td>
+  </tr>
+  <tr>
+    <td width="233">注意:</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;默認和 加 on    update action&nbsp; 表示更新受限</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;加on update cascade 表示更新不受限,多項</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;操作時用逗號隔開</td>
+  </tr>
+  <tr>
+    <td rowspan="7" width="100">添加索引約束</td>
+    <td rowspan="7" width="233">　</td>
+    <td rowspan="7" width="310">　</td>
+    <td width="409">alter table 表名 add    index 索引名 (列名)</td>
+  </tr>
+  <tr>
+    <td width="409">添加普通索引：</td>
+  </tr>
+  <tr>
+    <td width="409">create index 索引名 ON 表名 (列名)</td>
+  </tr>
+  <tr>
+    <td width="409">添加唯一索引：</td>
+  </tr>
+  <tr>
+    <td width="409">create unique索引名 ON 表名 (列名)</td>
+  </tr>
+  <tr>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td rowspan="4" width="100">刪除索引</td>
+    <td rowspan="4" width="233">　</td>
+    <td rowspan="4" width="310">　</td>
+    <td width="409">drop index 索引名 on 表名</td>
+  </tr>
+  <tr>
+    <td width="409">alter table 表名 drop index 索引名</td>
+  </tr>
+  <tr>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td rowspan="3" width="100">創建登陸帳戶</td>
+    <td width="233">windows身份: exec    sp_grantlog &lsquo;windows功能變數名稱\密碼&rsquo;</td>
+    <td rowspan="3" width="310">　</td>
+    <td rowspan="3" width="409">SET&nbsp;PASSWORD&nbsp;FOR&nbsp;'username'@'host'&nbsp;= PASSWORD('newpassword');</td>
+  </tr>
+  <tr>
+    <td width="233">sql身份: exec sp_addlogin &lsquo;登陸帳戶&rsquo;,&rsquo;密碼&rsquo;</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+  </tr>
+  <tr>
+    <td rowspan="7" width="100">創建資料庫使用者</td>
+    <td width="233">use 資料庫名</td>
+    <td width="310">create user HDEAM_TYMB</td>
+    <td width="409">mysql&gt;insert into    mysql.user(Host,User,Password,ssl_cipher,x509_issuer,x509_sub </td>
+  </tr>
+  <tr>
+    <td width="233">Windwos身份: Exec sp_grantdbaccess &lsquo;windows功能變數名稱\密碼&rsquo;,&rsquo;資料庫用戶名&rsquo;</td>
+    <td width="310">&nbsp; identified by &quot;&quot;</td>
+    <td width="409">ject)    values(&quot;localhost&quot;,&quot;pppadmin&quot;,password(&quot;passwd&quot;),'','','');</td>
+  </tr>
+  <tr>
+    <td width="233">Sql身份: Exec sp_grantdbaccess &lsquo;登陸帳戶&rsquo;,&rsquo;資料庫用戶名&rsquo;</td>
+    <td width="310">&nbsp; default tablespace HDEAM_TYMB</td>
+    <td width="409">CREATE USER 'dog'@'localhost' IDENTIFIED BY '123456';</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+    <td width="310">&nbsp; temporary tablespace TEMP</td>
+    <td width="409">CREATE USER 'pig'@'192.168.1.101_' IDENDIFIED BY '123456';</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+    <td width="310">&nbsp; profile DEFAULT;</td>
+    <td width="409">CREATE USER 'pig'@'%' IDENTIFIED BY '123456';</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+    <td width="310">　</td>
+    <td width="409">CREATE USER 'pig'@'%' IDENTIFIED BY '';</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+    <td width="310">　</td>
+    <td width="409">CREATE USER 'pig'@'%';</td>
+  </tr>
+  <tr>
+    <td rowspan="4" width="100">向資料庫使用者授權</td>
+    <td width="233">use 資料庫名</td>
+    <td width="310">-- Grant/Revoke role privileges</td>
+    <td width="409">grant select,insert,update,delete on *.* to test1@&ldquo;%&rdquo; Identified    by &ldquo;abc&rdquo;;</td>
+  </tr>
+  <tr>
+    <td width="233">Grant 許可權&nbsp; [on 表明]&nbsp; to&nbsp; 資料庫使用者</td>
+    <td width="310">grant dba to HDEAM_TYMB with admin option;</td>
+    <td width="409">grant all privileges on phplampDB.* to phplamp@localhost    identified by '1234';</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+    <td width="310">-- Grant/Revoke system privileges</td>
+    <td width="409">mysql&gt;flush privileges;</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+    <td width="310">grant unlimited tablespace to HDEAM_TYMB with admin option;</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">刪除許可權</td>
+    <td width="233">revoke 許可權 [on 表名] &nbsp;from 資料庫使用者</td>
+    <td width="310">　</td>
+    <td width="409">REVOKE&nbsp;SELECT&nbsp;ON&nbsp;*.* FROM&nbsp;'pig'@'%';</td>
+  </tr>
+  <tr>
+    <td rowspan="2" width="100">刪除資料庫使用者</td>
+    <td rowspan="2" width="233">exec sp_revokedbaccess &lsquo;資料庫使用者&rsquo;</td>
+    <td rowspan="2" width="310">drop user HDEAM_SBFF cascade;</td>
+    <td width="409">mysql&gt;Delete FROM user Where User=&quot;phplamp&quot; and    Host=&quot;localhost&quot;;</td>
+  </tr>
+  <tr>
+    <td width="409">mysql&gt;flush privileges;</td>
+  </tr>
+  <tr>
+    <td rowspan="2" width="100">刪除登陸帳戶</td>
+    <td width="233">windows身份: exec    sp_droplogin 登陸帳戶名</td>
+    <td rowspan="2" width="310">　</td>
+    <td rowspan="2" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">sql身份: exec sp_revokelogin&nbsp; 登陸帳戶名</td>
+  </tr>
+  <tr>
+    <td rowspan="6" width="100">移動資料庫</td>
+    <td width="233">1.分離資料庫:</td>
+    <td width="310">exp hdeam_product/d3B68Apk29v34Dj@orcl file=E:/tymb.dmp    log=E:/tymb.log</td>
+    <td width="409">mysqldump -h localhost -u root -pmysql oa &gt;d:\oa.sql</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp; Exec sp_detach_db 資料庫名</td>
+    <td width="310">　</td>
+    <td width="409">mysql -h localhost -u root -p jira&lt;d:\jira.sql</td>
+  </tr>
+  <tr>
+    <td width="233">2.附加資料庫:</td>
+    <td width="310">imp HDEAM_LHSH/HDEAM_LHSH@orcldev    file=E:\TYMBHDEAM_BAK_2013-03-25.dmp full=Y;</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp; Exec sp_attach_db 資料庫名,</td>
+    <td width="310">　</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp; @filename1=&rsquo;主資料檔案路徑&rsquo;,</td>
+    <td width="310">　</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp; @filename2=&rsquo;日誌檔路徑&rsquo;</td>
+    <td width="310">　</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td rowspan="16" width="100">資料庫的資訊查詢</td>
+    <td width="233">查看資料庫的所有物件:Select * from sysobjects</td>
+    <td width="310">注意: 下面都是通過(    select * from 物件 ) 來查看資訊</td>
+    <td width="409">查看所有資料庫 show databases;</td>
+  </tr>
+  <tr>
+    <td width="233">查詢資料庫 select * from&nbsp;    sysdatabases (表)</td>
+    <td width="310">觸發器 user_triggers</td>
+    <td width="409">查看庫所有表 show tables;</td>
+  </tr>
+  <tr>
+    <td width="233">查看表結構和屬性 Exec Sp_help 表名</td>
+    <td width="310">&nbsp;過程    user_procedures</td>
+    <td width="409">查看表結構和屬性</td>
+  </tr>
+  <tr>
+    <td width="233">查看所有資料庫&nbsp; Exec    sp_databases</td>
+    <td width="310">&nbsp;查看原始程式碼&nbsp;    user_source</td>
+    <td width="409">use information_schema;</td>
+  </tr>
+  <tr>
+    <td width="233">查看資料庫的位置和屬性Exec sp_helpdb 數&nbsp; 據庫名</td>
+    <td width="310">&nbsp;查看資料庫物件    user_objects</td>
+    <td width="409">select * from columns where table_name=&rsquo;表名&rsquo;</td>
+  </tr>
+  <tr>
+    <td width="233">查看表中的約束exec    sp_helpconstraint 表名</td>
+    <td width="310">&nbsp;查看錯誤資訊 show    errors</td>
+    <td width="409">查看表原始程式碼show create table 表名;</td>
+  </tr>
+  <tr>
+    <td width="233">查看表的索引 exec sp_helpindex 表</td>
+    <td width="310">&nbsp;查看索引資訊    user_indexes</td>
+    <td width="409">查看存儲過程源代show create procedure 過程名</td>
+  </tr>
+  <tr>
+    <td width="233">查看系統中的儲蓄過程：</td>
+    <td width="310">&nbsp;查看分區索引    user_ind_partitions</td>
+    <td width="409">查看視圖原始程式碼show create procedure 過程名</td>
+  </tr>
+  <tr>
+    <td width="233">exec _stored_procedures 儲蓄過程/空</td>
+    <td width="310">&nbsp;查看有關基於列創建的索引    user_ind_columns</td>
+    <td width="409">查看視圖資代碼show&nbsp; create&nbsp; VIEW&nbsp; 視圖名</td>
+  </tr>
+  <tr>
+    <td width="233">查看 過程,函數,視圖,表的原始程式碼:</td>
+    <td width="310">&nbsp;查看表空間 --    user_tablespaces</td>
+    <td width="409">查看表的索引show index from 表名</td>
+  </tr>
+  <tr>
+    <td width="233">Exec sp_helptext 對象名</td>
+    <td width="310">&nbsp;查看序列 --    user_sequences</td>
+    <td width="409">查看表的索引show keys from 表明</td>
+  </tr>
+  <tr>
+    <td width="233">查看資料庫所有登陸帳戶:</td>
+    <td width="310">&nbsp;查看同義詞 --    user_ind_columns</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;select * from syslogins</td>
+    <td width="310">&nbsp;查看使用者表資訊 --    user_tables</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">查看資料庫所有資料庫使用者:</td>
+    <td width="310">&nbsp;查看使用者所有的表資訊    user_all_tables</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;select * from sysusers</td>
+    <td width="310">　</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+    <td width="310">　</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">時間</td>
+    <td width="233">datetime</td>
+    <td width="310">sysdate</td>
+    <td width="409">NOW()</td>
+  </tr>
+  <tr>
+    <td width="100">時間戳記</td>
+    <td width="233">timestamp</td>
+    <td width="310">　</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">字串</td>
+    <td width="233">varchar(20)</td>
+    <td width="310">varchar2(20)</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">獲取當前系統</td>
+    <td rowspan="2" width="233">getdate()</td>
+    <td rowspan="2" width="310">sysdate</td>
+    <td rowspan="2" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">時間和時間戳記</td>
+  </tr>
+  <tr>
+    <td width="100">資料插入</td>
+    <td width="233">不一定要指定具體列名</td>
+    <td width="310">不一定要指定具體列名</td>
+    <td width="409">必須指定具體列名</td>
+  </tr>
+  <tr>
+    <td rowspan="3" width="100">標識</td>
+    <td rowspan="3" width="233">identity (標識的開始值, 標識種右)</td>
+    <td width="310">create sequence 序列名</td>
+    <td rowspan="3" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="310">1.序列名.nextval 獲取下一個序列的值</td>
+  </tr>
+  <tr>
+    <td width="310">2.序列名.currval 獲取當前的序列的值</td>
+  </tr>
+  <tr>
+    <td rowspan="3" width="100">物理檔個數</td>
+    <td width="233">主資料檔案: *.mdf =1</td>
+    <td width="310">資料檔案: *.dbf &gt;=1</td>
+    <td rowspan="3" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">次資料檔案:*.ndf &gt;=0</td>
+    <td width="310">　</td>
+  </tr>
+  <tr>
+    <td width="233">日誌檔: *.log &gt;=1</td>
+    <td width="310">日誌檔: *.log &gt;=1</td>
+  </tr>
+  <tr>
+    <td rowspan="17" width="100">字元函數</td>
+    <td width="233">charindex(t_char,s _char,1)從s字串中的1位置開始查找t字串所在的下標(默認從1開始)</td>
+    <td width="310">instr(char ,search char) 查找第一個字元出現的位置 索引從1開始</td>
+    <td rowspan="17" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">substring(char,pos,len)從pos位置開始截取len</td>
+    <td width="310">　</td>
+  </tr>
+  <tr>
+    <td width="233">len(char) 獲取字串的長度</td>
+    <td width="310">substr(char, pos, len) 截取字串</td>
+  </tr>
+  <tr>
+    <td width="233">lower(char) 把字串全部轉換成小寫</td>
+    <td width="310">length(char) 返回字串的長度</td>
+  </tr>
+  <tr>
+    <td width="233">upper(char)把字串全部轉換成大寫</td>
+    <td width="310">lower(char) 轉換為小寫</td>
+  </tr>
+  <tr>
+    <td width="233">ltrim(char)清除左邊的空格</td>
+    <td width="310">upper(char) 轉換為大寫</td>
+  </tr>
+  <tr>
+    <td width="233">rtrim(char)清楚右邊的空格</td>
+    <td width="310">trim() 截取左右空格</td>
+  </tr>
+  <tr>
+    <td width="233">left(char,3)從左邊返回指定長度的字串</td>
+    <td width="310">initcap(char) 首字母大寫</td>
+  </tr>
+  <tr>
+    <td width="233">right(char,3)從右邊返回指定長度的字串</td>
+    <td width="310">ltrim(char,set) 左剪裁</td>
+  </tr>
+  <tr>
+    <td width="233">replace(s_char,t_char,n_char)將s中的t替換成</td>
+    <td width="310">rtrim(char,set) 右剪裁</td>
+  </tr>
+  <tr>
+    <td width="233">n字串</td>
+    <td width="310">replace(char oldchar, newchar) 字串替換</td>
+  </tr>
+  <tr>
+    <td width="233">stuff(&lsquo;ABCDEFG&rsquo;2,3,&rsquo;我的音樂我的世界&rsquo;)</td>
+    <td width="310">concat(char1, char2) 連接字串</td>
+  </tr>
+  <tr>
+    <td width="233">返回：A我的音樂我的世界EFG</td>
+    <td width="310">cha(67) 根據ASCII碼返回對應的字元</td>
+  </tr>
+  <tr>
+    <td width="233">在一個字串中，刪除從2位置開始指定長度為3的字串，並在該位置插入一個新的字串</td>
+    <td width="310">lpad()和rpad() 在字串的左邊或右邊添加東西</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+    <td width="310">需要3個參數 第一個是字串 第二個是返回值的總長度, 第三個是用來填充的字元</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+    <td width="310">　</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+    <td width="310">　</td>
+  </tr>
+  <tr>
+    <td rowspan="3" width="100">轉換函數</td>
+    <td width="233">cast(值 as varchar) 不需指定長度</td>
+    <td width="310">to_char(d|n, fmt)將數位或日期轉換為指定格式的字串</td>
+    <td rowspan="3" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">convert (varchar(20), 值) 必須指定長度</td>
+    <td width="310">to_date(char,frm)將char    或varchar 轉換為日期資料類型</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+    <td width="310">to_number() 將包含數位的字元轉換為number資料類型</td>
+  </tr>
+  <tr>
+    <td rowspan="8" width="100">其他函數</td>
+    <td width="233">abs(-1)&nbsp; - &gt;1 取絕對值</td>
+    <td width="310">nvl(ex1,ex2)</td>
+    <td rowspan="8" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">ceiling(43.5) -&gt; 44取上界最小整數</td>
+    <td width="310">&nbsp;如果ex1為null則返回ex2;</td>
+  </tr>
+  <tr>
+    <td width="233">floor(43.5)&nbsp; - &gt;43 取下界最大整數</td>
+    <td width="310">如果ex1不為null則返回ex1;</td>
+  </tr>
+  <tr>
+    <td width="233">power(5.2)&nbsp; - &gt;25 取冪</td>
+    <td width="310">nvl2(ex1,ex2,ex3)</td>
+  </tr>
+  <tr>
+    <td width="233">round(4.34,1) -&gt;4.3 四捨五入， 保留一位小數</td>
+    <td width="310">如果ex1不為null則返回ex2</td>
+  </tr>
+  <tr>
+    <td width="233">sign(-43) -&gt; -1 正數返回1 ,負數返回-1</td>
+    <td width="310">如果ex1為null則返回ex3</td>
+  </tr>
+  <tr>
+    <td width="233">sort(9) -&gt; 3 求平方根</td>
+    <td width="310">nullif(ex1,ex2)</td>
+  </tr>
+  <tr>
+    <td width="233">host_name() 獲取電腦名稱</td>
+    <td width="310">如果ex1=ex2則返回null    否則返回ex1;</td>
+  </tr>
+  <tr>
+    <td rowspan="7" width="100">分組函數(彙總函式)</td>
+    <td width="233">avg(列名) 求這列的平均值</td>
+    <td width="310">avg(列名) 求這列的平均值</td>
+    <td rowspan="7" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">min(列名) 求這列的最小值</td>
+    <td width="310">min(列名) 求這列的最小值</td>
+  </tr>
+  <tr>
+    <td width="233">max(列名) 求這列的最大值</td>
+    <td width="310">max(列名) 求這列的最大值</td>
+  </tr>
+  <tr>
+    <td width="233">count(*) 統計所有的行 包括重複值和空值</td>
+    <td width="310">count(*) 統計所有的行 包括重複值和空值</td>
+  </tr>
+  <tr>
+    <td width="233">count(列名) 統計指定列中非空值的個數</td>
+    <td width="310">count(列名) 統計指定列中非空值的個數</td>
+  </tr>
+  <tr>
+    <td width="233">count(distinct 列名) 統計不是重複值的個數</td>
+    <td width="310">count(distinct 列名) 統計不是重複值的個數</td>
+  </tr>
+  <tr>
+    <td width="233">group by右句用於將資訊表劃分為組,按組進行聚合運算</td>
+    <td width="310">group by右句用於將資訊表劃分為組,按組進行聚合運算</td>
+  </tr>
+  <tr>
+    <td rowspan="7" width="100">日期函數</td>
+    <td width="233">getdate() 返回當前系統時間</td>
+    <td width="310">a. add_months(d,n) 返回給指定的日期加上指定的月數後的日期值 select add_months(sysdate,2) from dual;</td>
+    <td rowspan="7" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">dateadd(mm,4,&rsquo;01/01/99&rsquo;)返回指定日期上+指定部分後的日期</td>
+    <td width="310">b. months_between(d,d) 返回2個日期之間的月數select    months_between (date '2005-05-06', date '2005-9-01') from dual;</td>
+  </tr>
+  <tr>
+    <td width="233">datediff(mm,&rsquo;01/01/99&rsquo;,&rsquo;05/01/99&rsquo;)返回兩日期間指定部分的值</td>
+    <td width="310">c. last_day(d) 返回指定日期當月的最後一天的日期select last_day(sysdate) from dual;</td>
+  </tr>
+  <tr>
+    <td width="233">datename(dw,&rsquo;01/01/2000&rsquo;)返回指定日期的指定部分的字串格式</td>
+    <td width="310">d. round(d, [fmt]) 返回日期值 日期四捨五入為格式模型指定的單位元 select round(date'2005-09-08','year') from dual; 返回 2005-01-01 select    round(date'2005-09-08','month') from dual; 返回 2005-09-01 select round(date'2005-09-08','day') from dual; 返回 最靠近的一個星期日</td>
+  </tr>
+  <tr>
+    <td width="233">datepart(day,&rsquo;01/15/2000&rsquo;)返回指定日期部分的整數形式</td>
+    <td width="310">e. next_day(d, day) 返回指定的下一個星期幾的日期 &nbsp; select next_day(sysdate,'星期二') from dual</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+    <td width="310">f.trunc 語法與round 相同 區別:trunc 是只舍不入</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+    <td width="310">g.extract 提取日期時間類型中的特定部分</td>
+  </tr>
+  <tr>
+    <td width="100">連接操作符</td>
+    <td width="233">+</td>
+    <td width="310">|| 連接字串用於將2個或多個字串合併成一個字串</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">集合查詢操作</td>
+    <td rowspan="4" width="233">　</td>
+    <td width="310">a.union&nbsp; union操作符返回2個查詢選定的所有不重複的行select orderno from order_master union select orderno from    order_detail;</td>
+    <td rowspan="4" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">(兩個表中的資料類型和列名必須相同)</td>
+    <td width="310">b.union all 合併2個查詢選定的所有行 包括重複的行</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="310">c.intersect&nbsp; 返回2個查詢都有的行</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="310">d.minus 第1個查詢在第2個查詢中不存在的資料</td>
+  </tr>
+  <tr>
+    <td width="100">連接查詢</td>
+    <td width="233">1.內連接:(查詢出條件匹配的所有行)</td>
+    <td width="310">完全一樣</td>
+    <td rowspan="12" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">(n個表,至少有n-1個條件)</td>
+    <td width="233">1) Select 左別名.列名,右別名.列名&nbsp;    from 左&nbsp; 表 as 左別名&nbsp; inner join &nbsp;右表 as 右別名on    左別名.列名 = 右別名.列名</td>
+    <td width="310">連接分類:</td>
+  </tr>
+  <tr>
+    <td width="100">原理:</td>
+    <td width="233">2) Select 左表名.列名,右表名.列名&nbsp;    from 左&nbsp; 表 ,右表 where 左表名.列名 = 右表名.列名</td>
+    <td width="310">1內連接:</td>
+  </tr>
+  <tr>
+    <td width="100">內連:</td>
+    <td width="233">2左外連接:(返回左表的所有行,如果右表沒有與左表匹配的行則全部用null代替,存在則顯示具體資料,顯示出來的總行數由左表決定)</td>
+    <td width="310">條件</td>
+  </tr>
+  <tr>
+    <td width="100">&nbsp;1對1</td>
+    <td width="233">Select 左別名.列名,右別名.列名&nbsp;    from 左&nbsp; 表 as 左別名&nbsp; left join &nbsp;右表 as 右別名on    左別名.列名 = 右別名.列名</td>
+    <td width="310">2外連接</td>
+  </tr>
+  <tr>
+    <td width="100">左外連:</td>
+    <td width="233">3右外連接:(返回右表的所有行,如果左表沒有與右表匹配的行則全部用null代替,存在則顯示具體資料,顯示出來的總行數由右表決定)</td>
+    <td width="310">&nbsp;1)左外連接:    left&nbsp; join 或    left&nbsp; outer&nbsp; join</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="233">Select 左別名.列名,右別名.列名&nbsp;    from 左&nbsp; 表 as 左別名&nbsp; right join &nbsp;右表 as 右別名on    左別名.列名 = 右別名.列名</td>
+    <td width="310">&nbsp;2)右外連接:right&nbsp;    join 或 right    outer&nbsp; join</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="233">　</td>
+    <td width="310">&nbsp;3)完整外連接: Full    join 或 Full outer&nbsp;    join&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="233">　</td>
+    <td width="310">3交叉連接: from …</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="233">　</td>
+    <td width="310">　</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="233">　</td>
+    <td width="310">4. 交叉連接:(返回左右表的所有行,如果左表沒有與右表匹配的行則全部用null代替,如果右表沒有與左表匹配的行則全部用null代替,存在則顯示具體資料,顯示出來的總行數=左表和右表行數和決定)</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="233">　</td>
+    <td width="310">Select 左別名.列名,右別名.列名&nbsp;    from 左&nbsp; 表 as 左別名&nbsp; right join &nbsp;右表 as 右別名on    左別名.列名 = 右別名.列名</td>
+  </tr>
+  <tr>
+    <td rowspan="7" width="100">利用現有表創建新表</td>
+    <td width="233">a,表存在</td>
+    <td width="310">a.完全拷貝: create    table temp as select * from emp;</td>
+    <td rowspan="7" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">1.完全拷貝: insert into 目標表 select * from 源表</td>
+    <td width="310">b.拷貝一部分create table    temp as select 列1,列2 &nbsp;from 表</td>
+  </tr>
+  <tr>
+    <td width="233">2.部分拷貝: insert into 目標表 (列名)    &nbsp;select 列名 from 源表</td>
+    <td width="310">c.只拷貝一個空表(根據一個假條件)</td>
+  </tr>
+  <tr>
+    <td width="233">b,表不存</td>
+    <td width="310">create table temp as select * from 表 where 1=2</td>
+  </tr>
+  <tr>
+    <td width="233">1.完全拷貝: &nbsp;select *&nbsp; into 新表&nbsp; from 源表</td>
+    <td width="310">d.使用列別名: select    stu_id, stu_name as &quot;學生姓名&quot; from student;</td>
+  </tr>
+  <tr>
+    <td width="233">2.部分拷貝:&nbsp; select 列名&nbsp; into 新表&nbsp; from 源表</td>
+    <td width="310">　</td>
+  </tr>
+  <tr>
+    <td width="233">3.拷貝表結構: select &nbsp;*&nbsp; into 新表&nbsp; from 源表 Where 1=2</td>
+    <td width="310">　</td>
+  </tr>
+  <tr>
+    <td rowspan="17" width="100">利用把A表資料,同步B表</td>
+    <td width="233">方法1：</td>
+    <td rowspan="17" width="310">update 目標表a, 源表b set &nbsp;a.列 =b.列 where a.關聯列 = b.關聯列</td>
+    <td rowspan="17" width="409">update 目標表a, 源表b set&nbsp; a.列 =b.列 where a.關聯列 = b.關聯列</td>
+  </tr>
+  <tr>
+    <td width="233">update 目標表&nbsp; set 列 = a.列    from 源表 a where a.關聯列 &nbsp;= 目標表.關聯列</td>
+  </tr>
+  <tr>
+    <td width="233">方法2：</td>
+  </tr>
+  <tr>
+    <td width="233">update b set b.列 = a.列 from&nbsp; 源表 a , 目標表    b where a.關聯列 = b.關聯列</td>
+  </tr>
+  <tr>
+    <td width="233">方法3：</td>
+  </tr>
+  <tr>
+    <td width="233">update 目標表 set&nbsp; 列 = a.列    from&nbsp; 源表 a , 目標表 b where a.關聯列 = b.關聯列</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+  </tr>
+  <tr>
+    <td width="233">方法4：</td>
+  </tr>
+  <tr>
+    <td width="233">update 目標表 set&nbsp; 目標表.列 = a.列 from&nbsp; 源表 a , 目標表 b where a.關聯列 = b.關聯列</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+  </tr>
+  <tr>
+    <td width="233">方法5：</td>
+  </tr>
+  <tr>
+    <td width="233">update 目標表 set目標表.列 = a.列 from 源表    a where a.關聯列 &nbsp;= 目標表.關聯列</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+  </tr>
+  <tr>
+    <td width="233">方法6：</td>
+  </tr>
+  <tr>
+    <td width="233">通過關聯查詢語句生成update語句</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+  </tr>
+  <tr>
+    <td width="233">　</td>
+  </tr>
+  <tr>
+    <td rowspan="13" width="100">資料操縱語言(DML)</td>
+    <td width="233">a.創建一個新表</td>
+    <td width="310">a.創建一個新表</td>
+    <td rowspan="13" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">create table student(stu_id    int, stu_name varchar(20))</td>
+    <td width="310">create table student(stu_id int, stu_name varchar2(20)) tablespace    lijiao</td>
+  </tr>
+  <tr>
+    <td width="233">b.修改表中的列</td>
+    <td width="310">b.修改表中的列</td>
+  </tr>
+  <tr>
+    <td width="233">alter table 表名 alter column&nbsp; 列名</td>
+    <td width="310">alter table student modify(stu_name varchar2(40))</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;新資料庫類型 大小</td>
+    <td width="310">c.添加表中的列</td>
+  </tr>
+  <tr>
+    <td width="233">c.添加表中的列</td>
+    <td width="310">alter table student add(stu_age int)</td>
+  </tr>
+  <tr>
+    <td width="233">alter table 表名 Add 列名 資料庫類型</td>
+    <td width="310">d.刪除表中的列</td>
+  </tr>
+  <tr>
+    <td width="233">d.刪除表中的列</td>
+    <td width="310">alter table student drop column stu_age</td>
+  </tr>
+  <tr>
+    <td width="233">alter table&nbsp; 表名 drop column 列名</td>
+    <td width="310">e.刪除表中的記錄 而不刪除表的結構truncate table student</td>
+  </tr>
+  <tr>
+    <td width="233">e.刪除表中的記錄 而不刪除表的結構truncate    table student</td>
+    <td width="310">f.只是查看表的結構</td>
+  </tr>
+  <tr>
+    <td width="233">f.只是查看表的結構</td>
+    <td width="310">desc student</td>
+  </tr>
+  <tr>
+    <td width="233">g.刪除表中的資料及表的結構</td>
+    <td width="310">g.刪除表中的資料及表的結構</td>
+  </tr>
+  <tr>
+    <td width="233">drop table student;</td>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    drop table student;</td>
+  </tr>
+  <tr>
+    <td width="100">事務控制語言</td>
+    <td rowspan="5" width="233">　</td>
+    <td width="310">a. commit 命令(用於提交並結束交易處理)    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;commit</td>
+    <td rowspan="5" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">事務:是單個的工作單元. 將多條相關的語句一起全部執行(必須是相關的) 執行一系列的操作</td>
+    <td width="310">b.savepoint 保存點類似於標記    它將很長的交易處理劃分為較小的部分 他們用來標記事務中可以應用回滾的點save point    savepoint_id</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="310">c.rollbace work ,rollback</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="310">d.回滾到某個保存點</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="310">rollback to savepoint &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+  </tr>
+  <tr>
+    <td rowspan="3" width="100">Oracle中特有的偽列(偽列就像資料庫中的一個表列,但實際上並未存儲在表中,偽列只能查詢)</td>
+    <td rowspan="3" width="233">不存在</td>
+    <td width="310">a.rowid(可以唯一的標識資料庫中的一行)</td>
+    <td rowspan="3" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="310">b.rownum (代表行的序號)</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp;&nbsp; rownum 不跟&gt; , = , &gt;= 操作使用</td>
+  </tr>
+  <tr>
+    <td width="100">定一個區域變數</td>
+    <td width="233">Declare @變數名    DataType</td>
+    <td width="310">　</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td rowspan="2" width="100">為變數賦值</td>
+    <td width="233">Set&nbsp; @變數名 = 值&nbsp; 或</td>
+    <td rowspan="2" width="310">　</td>
+    <td rowspan="2" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">Select @變數名 = 值</td>
+  </tr>
+  <tr>
+    <td width="100">帶查詢語句為變數</td>
+    <td width="233">Select @變數名 = 列名 from 表明 where 列名    =</td>
+    <td rowspan="2" width="310">　</td>
+    <td rowspan="2" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">賦值</td>
+    <td width="233">條件</td>
+  </tr>
+  <tr>
+    <td width="100">常用的全域變數</td>
+    <td width="233">@@error&nbsp; 最後一個T-SQL錯誤號</td>
+    <td rowspan="3" width="310">　</td>
+    <td rowspan="3" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">(使用者不能定義的變數)</td>
+    <td width="233">@@identity 最後一次插入的標識值</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="233">@@Servername 本機伺服器的名稱</td>
+  </tr>
+  <tr>
+    <td rowspan="2" width="100">輸出語句</td>
+    <td width="233">Print&nbsp; &lsquo;值&rsquo; 只出現在查詢分析器中顯示</td>
+    <td rowspan="2" width="310">　</td>
+    <td rowspan="2" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">RaisError(&lsquo;值&rsquo;,16,1) 能在前臺用異常撲捉</td>
+  </tr>
+  <tr>
+    <td width="100">邏輯控制語句</td>
+    <td width="233">If (條件) begin … end    &nbsp;</td>
+    <td width="310">a) if condition then&nbsp;&nbsp; exp_body&nbsp;&nbsp;</td>
+    <td rowspan="7" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="233">If (條件) &nbsp;begin    …end &nbsp;else&nbsp; begin … end</td>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; end if;</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="233">　</td>
+    <td width="310">b) if condition then&nbsp;&nbsp; exp_body&nbsp;&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="100">判斷存在時</td>
+    <td width="233">If exists(select * from 表名 where 列名    = 值)</td>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;else&nbsp;    exp_body&nbsp;&nbsp; end if;</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="233">begin …. end</td>
+    <td width="310">c) if condition then&nbsp;&nbsp; exp_body&nbsp;&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="100">判斷不存在時</td>
+    <td width="233">If not&nbsp; exists(select * from 表名 where 列名    = 值)&nbsp; begin …. end</td>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;elsif condition    then&nbsp; exp_body&nbsp;&nbsp;&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="233">　</td>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;else&nbsp;    exp_body&nbsp;&nbsp;&nbsp; end if;</td>
+  </tr>
+  <tr>
+    <td rowspan="4" width="100">迴圈控制語句</td>
+    <td rowspan="4" width="233">While(true) begin … end</td>
+    <td width="310">1) loop&nbsp; condition&nbsp;&nbsp; end loop</td>
+    <td rowspan="4" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="310">2) while condition Loop&nbsp;    exp_body&nbsp; end loop</td>
+  </tr>
+  <tr>
+    <td width="310">3)for varable in    [REVERSE]&nbsp; value1...value2&nbsp; ( varable 變數不需聲明 , ... 是範圍連接子 )</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    loop&nbsp; exp_body&nbsp;&nbsp; end loop</td>
+  </tr>
+  <tr>
+    <td rowspan="11" width="100">Case</td>
+    <td width="233">a) select 別名=case</td>
+    <td width="310">a) select case 列名</td>
+    <td rowspan="11" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp; when 條件 then 值</td>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;when    值 then 值</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    when 條件 then 值</td>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;when 值 then 值</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    else 值</td>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else 值</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp; end&nbsp; from 表</td>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end case&nbsp;    from 表明</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td width="310">　</td>
+  </tr>
+  <tr>
+    <td width="233">b) select case 列名</td>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b) select case</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;when 值 then 值</td>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp; when 列名=值&nbsp; then 值</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;when 值 then 值</td>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    when 列名=值&nbsp; then 值</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;else 值</td>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    else 值</td>
+  </tr>
+  <tr>
+    <td width="233">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;end&nbsp;    from 表</td>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    end case from 表</td>
+  </tr>
+  <tr>
+    <td rowspan="6" width="100">屬性類型:</td>
+    <td rowspan="6" width="233">不存在</td>
+    <td width="310">1.列類型: %TYPE</td>
+    <td rowspan="6" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp;varable    tableName.columnName%TYPE;</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp;2.行類型: %ROWTYPE</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp;&nbsp;&nbsp; varable    tableName%ROWTYPE;</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp;3.使用行類型:</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    varable.列名;</td>
+  </tr>
+  <tr>
+    <td rowspan="13" width="100">異常處理</td>
+    <td rowspan="13" width="233">RaisError(&lsquo;異常資訊&rsquo;,16,1)    能在前臺用異常撲捉</td>
+    <td width="310">&nbsp;1)自訂異常:</td>
+    <td rowspan="13" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp;&nbsp;&nbsp; a)定義異常:(位 declare和    begin之間)</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    DECLARE&nbsp; varable EXCEPTION;</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp;&nbsp;&nbsp; b)顯示引發異常(為 begin 和    end 之間):</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    RAISE&nbsp; varable;</td>
+  </tr>
+  <tr>
+    <td width="310">2)處理預定義異常:(位 begin    和 end 之間)</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp;EXCEPTION</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp; when&nbsp;    Too_Many_ROWS&nbsp; then</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp;&nbsp;&nbsp;    DBMS_OUTPUT.PUT_LINE('返回多行');</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp; when&nbsp; others then</td>
+  </tr>
+  <tr>
+    <td width="310">&nbsp;&nbsp;&nbsp;    DBMS_OUTPUT.PUT_LINE('全部處理');</td>
+  </tr>
+  <tr>
+    <td width="310">3) 引發應用程式錯誤:</td>
+  </tr>
+  <tr>
+    <td width="310">RAISE_APPLICATION_ERROR(error_number,    error_message);</td>
+  </tr>
+  <tr>
+    <td width="100">子查詢</td>
+    <td width="233">相關子查詢:(重複子查詢,不能單獨執行)</td>
+    <td width="310">一樣</td>
+    <td rowspan="4" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">(原理:在一個查詢的基礎上進行再次查詢)</td>
+    <td width="233">切套右查詢(只執行一次,能單獨執行, 查詢原理: 從外(外sql一次查出所有的行一次一行的傳遞給裡面的sql)到裡 把外不查出來的值傳遞給裡面來)</td>
+    <td width="310">切套子查詢:</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="233">注意:查詢到結果可以作為表來使用但必須指定別名</td>
+    <td width="310">Select * from AuthorBook a where CopyRight =</td>
+  </tr>
+  <tr>
+    <td width="100">　</td>
+    <td width="233">　</td>
+    <td width="310">(select Max(CopyRight) from AuthorBook where&nbsp; BookName =    a.BopokName)</td>
+  </tr>
+  <tr>
+    <td rowspan="3" width="100">查詢性能的規則</td>
+    <td width="233">能用連接查詢時一般不用右查詢</td>
+    <td rowspan="3" width="310">完全一樣</td>
+    <td rowspan="3" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">右查詢功能(效率低)&gt;連接查詢(效率高)</td>
+  </tr>
+  <tr>
+    <td width="233">右查詢能用語查詢所有查詢, 而連接查詢有些不能. 右查詢有連接查詢不能的功能</td>
+  </tr>
+  <tr>
+    <td width="100">In 和 not in</td>
+    <td width="233">只能適合於 返回多行一列</td>
+    <td width="310">完全一樣</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td width="100">=,&gt;,&lt;,=&gt;,=&lt;,1=</td>
+    <td width="233">只能適合於返回一行一列</td>
+    <td width="310">完全一樣</td>
+    <td width="409">　</td>
+  </tr>
+  <tr>
+    <td rowspan="3" width="100">分組: Group by</td>
+    <td width="233">Where 只能出現在Group by分組之前,</td>
+    <td rowspan="3" width="310">完全一樣</td>
+    <td rowspan="3" width="409">　</td>
+  </tr>
+  <tr>
+    <td width="233">Having 不能單獨使用</td>
+  </tr>
+  <tr>
+    <td width="233">如果沒有group by 就沒有Having</td>
+  </tr>
+  <tr>
+    <td width="100">排序</td>
+    <td width="233">Order by&nbsp; desc / asc</td>
+    <td width="310">完全 一樣</td>
+    <td width="409">　</td>
+  </tr>
+</table>
+<p>相對於mssql oracle顯著的書寫特點： <br />
+1.代碼片段必須放到begin end .. 中 <br />
+2.虛擬表 dual 的使用 <br />
+3.每行代碼強制分號&quot;;&quot;結束，包括end <br />
+4.賦值符號 :=；（select xx into xx from  daul;也可以用於賦值） <br />
+5.省略了 as <br />
+... </p>
+<p>補充： <br />
+  幾種關聯式資料庫中字元編碼和存儲長度需要注意的幾個問題<br />
+  <br />
+  1.mysql中char(n) varchar(n) 中再utf8編碼存儲方式下數位元元表示的是字元數，但是在其他方式下就根據情況定，需要再相應環境下探索一下。<br />
+  <br />
+  2.SqlServer<br />
+  char(n)：固定長度，存儲ANSI字元，不足的補英文半形空格。&nbsp; n是位元組數。<br />
+  nchar(n)：固定長度，存儲Unicode字元，不足的補英文半形空格。n是字元數。<br />
+  varchar：可變長度，存儲ANSI字元，根據資料長度自動變化。n是位元組數。<br />
+  nvarchar：可變長度，存儲Unicode字元，根據資料長度自動變化。n是字元數。<br />
+  <br />
+  3.Oracle<br />
+  和SqlServer類似 n字頭的都是unicode類型,定義的長度是字元數(在我本地環境驗證如此)<br />
+  <br />
+  char/varchar/varchar2則和參數設置相關 ，通過語句<br />
+  select  * from sys.nls_database_parameters;<br />
+  select  * from sys.nls_session_parameters;<br />
+  發現參數 NLS_LENGTH_SEMANTICS 是byte(非char)，所以定義的長度是byte(通過實驗確認如此，但是沒有改為char驗證)。<br />
+  <br />
+  總的來說，不管使用以上那種資料庫，使用前或使用已有環境時先回顧並弄清楚，當前資料庫的版本、引擎、存儲編碼、字元集、每種資料類型的含義。含義包括<br />
+  a.是否可變長度<br />
+  b.編碼 -是否unicode等<br />
+  c.定義長度的含義是字元還是位元組<br />
+  b.資料類型長度(單位)的取值範圍 </p>
+<p>&nbsp;</p>
+<p>參考：https://blog.csdn.net/qq_39151274/article/details/114685416</p>
+<p>&nbsp;</p>
+</body>
+</html>
